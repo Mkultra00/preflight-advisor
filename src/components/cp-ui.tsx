@@ -32,7 +32,7 @@ export function PageHeader({ kicker, title, children }: { kicker: string; title:
   );
 }
 
-export function Stat({ label, value, tone }: { label: string; value: ReactNode; tone?: "bad" | "good" }) {
+export function Stat({ label, value, tone }: { label: string; value: ReactNode; tone?: "bad" | "good" | undefined }) {
   return (
     <div className="panel p-4">
       <div className="label-caps">{label}</div>

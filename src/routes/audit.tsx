@@ -33,7 +33,8 @@ function Audit() {
       ) : (
         <div className="panel divide-y">
           {data.map((e) => {
-            const p = e.payload as Record<string, unknown>;
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const p = e.payload as any;
             return (
               <div key={e.id} className="num grid grid-cols-[4rem_7rem_4rem_10rem_1fr] gap-3 p-2 text-xs">
                 <span className="text-muted-foreground">#{e.id}</span>

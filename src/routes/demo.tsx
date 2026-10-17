@@ -58,7 +58,7 @@ function Demo() {
     await Promise.all(
       Array.from({ length: PARALLEL }, async () => {
         while (next < ids.length) {
-          const id = ids[next++];
+          const id = ids[next++]!;
           try {
             await run({ data: { opId: id } });
           } catch {

@@ -56,7 +56,7 @@ async function rpc(name: string, args: Record<string, unknown>) {
   return data;
 }
 
-async function runTool(name: string, args: Record<string, any>, version: AgentVersion, opId: string) {
+async function runTool(name: string, args: any, version: AgentVersion, opId: string) {
   switch (name) {
     case "get_operation": {
       const { data } = await db.from("operations").select("id,program_id,type,from_team,to_team,amount_usd,idempotency_key,status,note").eq("id", opId).single();
@@ -112,7 +112,7 @@ async function runTool(name: string, args: Record<string, any>, version: AgentVe
 }
 
 async function callModel(messages: any[], tools: any[]) {
-  const key = process.env.LOVABLE_API_KEY;
+  const key = process.env["LOVABLE_API_KEY"];
   if (!key) throw new Error("LOVABLE_API_KEY missing");
   const res = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
     method: "POST",
@@ -155,7 +155,7 @@ export async function processOperation(opId: string) {
       for (const call of msg.tool_calls) {
         toolCalls++;
         const name = call.function?.name;
-        let args: Record<string, any> = {};
+        let args: any = {};
         try {
           args = JSON.parse(call.function?.arguments || "{}");
         } catch {

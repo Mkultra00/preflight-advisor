@@ -25,7 +25,8 @@ function Steps({ opId }: { opId: string }) {
   return (
     <ol className="num space-y-1 p-3 text-xs">
       {[...data].reverse().map((e, i) => {
-        const p = e.payload as Record<string, unknown>;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const p = e.payload as any;
         return (
           <li key={e.id} className="flex gap-3">
             <span className="w-5 text-muted-foreground">{i + 1}</span>

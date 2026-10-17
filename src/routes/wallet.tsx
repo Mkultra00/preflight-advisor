@@ -51,7 +51,10 @@ function Wallet() {
 
   async function submit(type: "return" | "reallocate") {
     const amt = Number(amount);
-    if (!(amt > 0)) return toast.error("Enter an amount above zero");
+    if (!(amt > 0)) {
+      toast.error("Enter an amount above zero");
+      return;
+    }
     setBusy(true);
     try {
       const op = await create({
