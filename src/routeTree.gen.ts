@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuditRouteImport } from './routes/audit'
 import { Route as DemoRouteImport } from './routes/demo'
+import { Route as GuideRouteImport } from './routes/guide'
 import { Route as QueueRouteImport } from './routes/queue'
 import { Route as ReconcileRouteImport } from './routes/reconcile'
 import { Route as WalletRouteImport } from './routes/wallet'
@@ -29,6 +30,11 @@ const AuditRoute = AuditRouteImport.update({
 const DemoRoute = DemoRouteImport.update({
   id: '/demo',
   path: '/demo',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuideRoute = GuideRouteImport.update({
+  id: '/guide',
+  path: '/guide',
   getParentRoute: () => rootRouteImport,
 } as any)
 const QueueRoute = QueueRouteImport.update({
@@ -51,6 +57,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/audit': typeof AuditRoute
   '/demo': typeof DemoRoute
+  '/guide': typeof GuideRoute
   '/queue': typeof QueueRoute
   '/reconcile': typeof ReconcileRoute
   '/wallet': typeof WalletRoute
@@ -59,6 +66,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/audit': typeof AuditRoute
   '/demo': typeof DemoRoute
+  '/guide': typeof GuideRoute
   '/queue': typeof QueueRoute
   '/reconcile': typeof ReconcileRoute
   '/wallet': typeof WalletRoute
@@ -68,23 +76,33 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/audit': typeof AuditRoute
   '/demo': typeof DemoRoute
+  '/guide': typeof GuideRoute
   '/queue': typeof QueueRoute
   '/reconcile': typeof ReconcileRoute
   '/wallet': typeof WalletRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/audit' | '/demo' | '/queue' | '/reconcile' | '/wallet'
+  fullPaths:
+    '/' | '/audit' | '/demo' | '/guide' | '/queue' | '/reconcile' | '/wallet'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/audit' | '/demo' | '/queue' | '/reconcile' | '/wallet'
+  to: '/' | '/audit' | '/demo' | '/guide' | '/queue' | '/reconcile' | '/wallet'
   id:
-    '__root__' | '/' | '/audit' | '/demo' | '/queue' | '/reconcile' | '/wallet'
+    | '__root__'
+    | '/'
+    | '/audit'
+    | '/demo'
+    | '/guide'
+    | '/queue'
+    | '/reconcile'
+    | '/wallet'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuditRoute: typeof AuditRoute
   DemoRoute: typeof DemoRoute
+  GuideRoute: typeof GuideRoute
   QueueRoute: typeof QueueRoute
   ReconcileRoute: typeof ReconcileRoute
   WalletRoute: typeof WalletRoute
@@ -111,6 +129,13 @@ declare module '@tanstack/react-router' {
       path: '/demo'
       fullPath: '/demo'
       preLoaderRoute: typeof DemoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guide': {
+      id: '/guide'
+      path: '/guide'
+      fullPath: '/guide'
+      preLoaderRoute: typeof GuideRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/queue': {
@@ -141,6 +166,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuditRoute: AuditRoute,
   DemoRoute: DemoRoute,
+  GuideRoute: GuideRoute,
   QueueRoute: QueueRoute,
   ReconcileRoute: ReconcileRoute,
   WalletRoute: WalletRoute,
