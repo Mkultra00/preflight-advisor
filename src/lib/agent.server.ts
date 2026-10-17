@@ -3,7 +3,7 @@
 import { supabaseAdmin } from "@/integrations/supabase/client.server";
 
 export type AgentVersion = "v1" | "v2";
-const MODEL = "google/gemini-3-flash-preview";
+const MODEL = "google/gemini-3.8-flash";
 const MAX_TURNS = 16;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
