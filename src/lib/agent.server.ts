@@ -1,3 +1,4 @@
+import { emitTrace } from "./prism.server";
 // Server-only: the reallocation agent loop and its tools.
 // The model decides and explains; the database functions own the arithmetic.
 import { supabaseAdmin } from "@/integrations/supabase/client.server";

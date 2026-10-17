@@ -80,9 +80,9 @@ function Queue() {
                       <td className="num max-w-48 truncate p-2 text-xs text-destructive">{o.error_code ?? r?.error_code ?? ""}</td>
                       <td className="p-2 text-right">
                         {o.prism_session_id && (
-                          <a className="mr-2 underline" href={o.prism_session_id} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>
-                            PRISM
-                          </a>
+                          <span className="label-caps mr-2 text-success" title={`PRISM session ${o.prism_session_id}`}>
+                            PRISM ✓
+                          </span>
                         )}
                         {o.status === "requested" && (
                           <Button
