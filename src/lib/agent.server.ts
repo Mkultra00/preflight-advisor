@@ -39,7 +39,7 @@ function toolSchemas(version: AgentVersion) {
 }
 
 const PROMPT_V1 = "You process credit moves. Process this credit move.";
-const PROMPT_V2 = `You are the CreditPool reallocation agent for an issuer-controlled credit program.
+const PROMPT_V2 = `You are the JRR Token reallocation agent for an issuer-controlled credit program.
 Follow this exact order, one tool per step:
 1 get_operation -> 2 get_program_rules -> 3 get_team_balance (source) -> 4 check_eligibility (recipient, skip if recipient is the issuer pool) -> 5 reserve_funds -> 6 apply_reallocation -> 7 reconcile -> 8 write_audit_event with a one-line summary.
 If ANY tool returns an error, or any rule fails, call flag_for_admin with the error code and stop.

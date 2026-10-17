@@ -1,4 +1,4 @@
-# Preflight Advisor
+# JRR Token (Just Really Reliable)
 
 read this and give me your opinion in building in lovable. give me recommendations and criticisms befor3 buiklding
 

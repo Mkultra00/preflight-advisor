@@ -37,7 +37,7 @@ export const eventsQuery = (opId?: string) =>
     },
   });
 
-/** Subscribes to database changes and refreshes every CreditPool query (debounced). */
+/** Subscribes to database changes and refreshes every JRR Token query (debounced). */
 export function useLiveRefresh() {
   const qc = useQueryClient();
   useEffect(() => {

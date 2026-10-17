@@ -58,8 +58,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "CreditPool" },
-      { name: "description", content: "Issuer-controlled credit reallocation with an audited AI agent." },
+      { title: "JRR Token — Just Really Reliable" },
+      { name: "description", content: "JRR Token (Just Really Reliable): issuer-controlled credit reallocation with an audited AI agent." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -111,8 +111,8 @@ function RootComponent() {
       <header className="sticky top-0 z-20 border-b border-foreground bg-background">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-6 gap-y-2 px-4 py-3">
           <Link to="/" className="flex items-baseline gap-2">
-            <span className="text-lg font-bold tracking-tight">CreditPool</span>
-            <span className="label-caps">MONEY TALKS 2 · simulated issuer</span>
+            <span className="text-lg font-bold tracking-tight">JRR Token</span>
+            <span className="label-caps">Just Really Reliable · MONEY TALKS 2</span>
           </Link>
           <nav className="flex flex-wrap gap-1">
             {NAV.map((n) => (

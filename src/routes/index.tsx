@@ -6,9 +6,9 @@ import { programsQuery, teamsQuery, ledgerTotalsQuery, useLiveRefresh, usd } fro
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Program console · CreditPool" },
+      { title: "Program console · JRR Token" },
       { name: "description", content: "Budget, caps, expiry and team balances for the MONEY TALKS 2 credit program." },
-      { property: "og:title", content: "Program console · CreditPool" },
+      { property: "og:title", content: "Program console · JRR Token" },
       { property: "og:description", content: "Issuer view of credit budget, caps and team balances." },
     ],
   }),

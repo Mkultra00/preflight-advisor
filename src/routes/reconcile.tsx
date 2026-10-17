@@ -6,9 +6,9 @@ import { teamsQuery, runsQuery, useLiveRefresh, usd } from "@/lib/cp-data";
 export const Route = createFileRoute("/reconcile")({
   head: () => ({
     meta: [
-      { title: "Reconciliation · CreditPool" },
+      { title: "Reconciliation · JRR Token" },
       { name: "description", content: "Issuer ledger compared with approved operations, mismatches in red." },
-      { property: "og:title", content: "Reconciliation · CreditPool" },
+      { property: "og:title", content: "Reconciliation · JRR Token" },
       { property: "og:description", content: "Ledger vs operations, with every mismatch highlighted." },
     ],
   }),
@@ -78,3 +78,4 @@ function Reconcile() {
     </>
   );
 }
+
