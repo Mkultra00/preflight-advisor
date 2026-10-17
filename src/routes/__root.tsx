@@ -115,9 +115,9 @@ function RootComponent() {
             <img
               src={catWizardAvatar}
               alt="Cat wizard avatar"
-              className="h-14 w-14 rounded-full border-2 border-primary shadow-md"
+              className="h-[168px] w-[168px] rounded-full border-4 border-primary shadow-md"
             />
-            <span className="text-lg font-bold tracking-tight">JRR Token</span>
+            <span className="text-[54px] font-bold leading-none tracking-tight">JRR Token</span>
             <span className="label-caps">Just Really Reliable · MONEY TALKS 2</span>
           </Link>
           <nav className="flex flex-wrap gap-1">
