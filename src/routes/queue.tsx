@@ -6,14 +6,14 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { PageHeader, Empty, StatusPill } from "@/components/cp-ui";
 import { opsQuery, teamsQuery, runsQuery, eventsQuery, useLiveRefresh, usd } from "@/lib/cp-data";
-import { runAgent } from "@/lib/creditpool.functions";
+import { runAgent } from "@/lib/jrr.functions";
 
 export const Route = createFileRoute("/queue")({
   head: () => ({
     meta: [
-      { title: "Operations queue · CreditPool" },
+      { title: "Operations queue · JRR Token" },
       { name: "description", content: "Live list of credit moves and what the agent did with each." },
-      { property: "og:title", content: "Operations queue · CreditPool" },
+      { property: "og:title", content: "Operations queue · JRR Token" },
       { property: "og:description", content: "Live operations with status, agent version and tool steps." },
     ],
   }),

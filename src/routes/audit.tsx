@@ -8,9 +8,9 @@ import { eventsQuery, useLiveRefresh } from "@/lib/cp-data";
 export const Route = createFileRoute("/audit")({
   head: () => ({
     meta: [
-      { title: "Audit log · CreditPool" },
+      { title: "Audit log · JRR Token" },
       { name: "description", content: "Append-only record of every agent, admin and system step." },
-      { property: "og:title", content: "Audit log · CreditPool" },
+      { property: "og:title", content: "Audit log · JRR Token" },
       { property: "og:description", content: "Every step, append-only, filterable by operation." },
     ],
   }),

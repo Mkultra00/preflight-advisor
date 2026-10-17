@@ -7,14 +7,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { PageHeader, Stat, Empty, StatusPill } from "@/components/cp-ui";
 import { programsQuery, teamsQuery, opsQuery, useLiveRefresh, usd } from "@/lib/cp-data";
-import { createOperation, runAgent } from "@/lib/creditpool.functions";
+import { createOperation, runAgent } from "@/lib/jrr.functions";
 
 export const Route = createFileRoute("/wallet")({
   head: () => ({
     meta: [
-      { title: "Team wallet · CreditPool" },
+      { title: "Team wallet · JRR Token" },
       { name: "description", content: "See a team's credit balance and return or request credits." },
-      { property: "og:title", content: "Team wallet · CreditPool" },
+      { property: "og:title", content: "Team wallet · JRR Token" },
       { property: "og:description", content: "Return unused credits or request more from the issuer pool." },
     ],
   }),

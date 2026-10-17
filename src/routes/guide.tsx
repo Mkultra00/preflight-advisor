@@ -3,10 +3,10 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 export const Route = createFileRoute("/guide")({
   head: () => ({
     meta: [
-      { title: "How to use · CreditPool" },
-      { name: "description", content: "Step-by-step guide and stage diagram for the CreditPool demo." },
-      { property: "og:title", content: "How to use · CreditPool" },
-      { property: "og:description", content: "Step-by-step guide and stage diagram for the CreditPool demo." },
+      { title: "How to use · JRR Token" },
+      { name: "description", content: "Step-by-step guide and stage diagram for the JRR Token demo." },
+      { property: "og:title", content: "How to use · JRR Token" },
+      { property: "og:description", content: "Step-by-step guide and stage diagram for the JRR Token demo." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],
@@ -34,7 +34,7 @@ function GuidePage() {
     <div className="space-y-10">
       <header>
         <p className="label-caps">Guide</p>
-        <h1 className="mt-1 text-3xl font-bold tracking-tight">How to use CreditPool</h1>
+        <h1 className="mt-1 text-3xl font-bold tracking-tight">How to use JRR Token</h1>
         <p className="mt-2 max-w-2xl text-muted-foreground">
           Every credit move passes through five stages. The AI only chooses steps; the database decides if money moves.
         </p>

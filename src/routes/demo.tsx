@@ -7,14 +7,14 @@ import { Button } from "@/components/ui/button";
 import { PageHeader, Stat } from "@/components/cp-ui";
 import { supabase } from "@/integrations/supabase/client";
 import { demoStateQuery, opsQuery, useLiveRefresh } from "@/lib/cp-data";
-import { seedDemo, snapshotLedger, resetLedger, insertBatch, setAgentVersion, runAgent } from "@/lib/creditpool.functions";
+import { seedDemo, snapshotLedger, resetLedger, insertBatch, setAgentVersion, runAgent } from "@/lib/jrr.functions";
 
 export const Route = createFileRoute("/demo")({
   head: () => ({
     meta: [
-      { title: "Demo control · CreditPool" },
+      { title: "Demo control · JRR Token" },
       { name: "description", content: "Seed sample data, snapshot and reset the ledger, and run the 60-operation batch." },
-      { property: "og:title", content: "Demo control · CreditPool" },
+      { property: "og:title", content: "Demo control · JRR Token" },
       { property: "og:description", content: "Presenter controls for the v1 vs v2 agent demo." },
     ],
   }),
