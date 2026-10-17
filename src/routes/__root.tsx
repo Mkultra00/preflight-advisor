@@ -101,6 +101,7 @@ const NAV = [
   { to: "/reconcile", label: "Reconcile" },
   { to: "/audit", label: "Audit" },
   { to: "/demo", label: "Demo control" },
+  { to: "/guide", label: "How to use" },
 ] as const;
 
 function RootComponent() {
