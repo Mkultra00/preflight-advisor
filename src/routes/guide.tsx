@@ -79,6 +79,33 @@ function GuidePage() {
           ))}
         </ol>
       </section>
+
+      <section>
+        <h2 className="mb-4 text-lg font-semibold">Watch the walkthrough</h2>
+        <video
+          src="/walkthrough.mp4"
+          controls
+          preload="metadata"
+          className="w-full max-w-3xl rounded-sm border border-border bg-card shadow-sm"
+        >
+          Your browser does not support embedded video.
+        </video>
+        <p className="mt-2 text-sm text-muted-foreground">
+          104-second narrated tour of the five stages and the v1 → v2 demo.
+        </p>
+      </section>
+
+      <section>
+        <h2 className="mb-4 text-lg font-semibold">Team</h2>
+        <ul className="grid gap-3 md:grid-cols-3">
+          {["Frank Yu", "Lyan Cheung", "Forrest Pan"].map((name) => (
+            <li key={name} className="rounded-sm border border-border bg-card p-4">
+              <div className="font-semibold">{name}</div>
+              <div className="text-sm text-muted-foreground">JRR Token · MONEY TALKS 2</div>
+            </li>
+          ))}
+        </ul>
+      </section>
     </div>
   );
 }
