@@ -4,7 +4,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* CreditPool design system: ledger paper, ink, one signal green, alarm red. */
+/* JRR Token design system: ledger paper, ink, one signal green, alarm red. */
 
 @theme inline {
   --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
