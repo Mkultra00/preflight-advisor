@@ -1,3 +1,4 @@
+import { emitTrace } from "./prism.server";
 // Server-only: the reallocation agent loop and its tools.
 // The model decides and explains; the database functions own the arithmetic.
 import { supabaseAdmin } from "@/integrations/supabase/client.server";
@@ -141,10 +142,26 @@ export async function processOperation(opId: string) {
   let failedCode: string | null = null;
   let summary = "";
   await audit(opId, "run_started", "agent", { agent_version: version, model: MODEL });
+  await db.from("operations").update({ prism_session_id: opId }).eq("id", opId);
 
   try {
     for (let turn = 0; turn < MAX_TURNS; turn++) {
-      const msg = await callModel(messages, tools);
+      const t0 = Date.now();
+      let msg: any;
+      try {
+        msg = await callModel(messages, tools);
+      } catch (e) {
+        await emitTrace({ input: messages, output: `ERROR: ${e instanceof Error ? e.message : e}`, model: MODEL, latencyMs: Date.now() - t0, sessionId: opId, metadata: { turn, agent_version: version, error: true } });
+        throw e;
+      }
+      await emitTrace({
+        input: messages,
+        output: msg?.tool_calls?.length ? JSON.stringify(msg.tool_calls.map((c: any) => ({ tool: c.function?.name, args: c.function?.arguments }))) : msg?.content ?? "",
+        model: MODEL,
+        latencyMs: Date.now() - t0,
+        sessionId: opId,
+        metadata: { turn, agent_version: version, scenario: op.scenario },
+      });
       if (!msg) throw new Error("empty_model_response");
       messages.push({ role: "assistant", content: msg.content ?? "", tool_calls: msg.tool_calls });
       if (!msg.tool_calls?.length) {
