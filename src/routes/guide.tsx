@@ -83,4 +83,3 @@ function GuidePage() {
   );
 }
 
-/* brand: JRR Token */
