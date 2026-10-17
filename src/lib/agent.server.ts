@@ -4,7 +4,17 @@ import { emitTrace } from "./prism.server";
 import { supabaseAdmin } from "@/integrations/supabase/client.server";
 
 export type AgentVersion = "v1" | "v2";
-const MODEL = "google/gemini-3.8-flash";
+const NICRRON_MODEL = "anthropic/claude-haiku-5-5";
+const FALLBACK_MODEL = "google/gemini-3.8-flash";
+// Nicrron (issuer's gateway) is primary; Lovable AI is the fallback when Nicrron isn't configured.
+function modelConfig() {
+  const key = process.env["NICRRON_API_KEY"];
+  const base = process.env["NICRRON_BASE_URL"];
+  if (key && base) return { url: `${base.replace(/\/$/, "")}/chat/completions`, key, model: NICRRON_MODEL };
+  const lk = process.env["LOVABLE_API_KEY"];
+  if (!lk) throw new Error("no_model_key");
+  return { url: "https://ai.gateway.lovable.dev/v1/chat/completions", key: lk, model: FALLBACK_MODEL };
+}
 const MAX_TURNS = 16;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -113,9 +123,8 @@ async function runTool(name: string, args: any, version: AgentVersion, opId: str
 }
 
 async function callModel(messages: any[], tools: any[]) {
-  const key = process.env["LOVABLE_API_KEY"];
-  if (!key) throw new Error("LOVABLE_API_KEY missing");
-  const res = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+  const { url, key, model: MODEL } = modelConfig();
+  const res = await fetch(url, {
     method: "POST",
     headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
     body: JSON.stringify({ model: MODEL, messages, tools, tool_choice: "auto" }),
@@ -128,6 +137,7 @@ async function callModel(messages: any[], tools: any[]) {
 }
 
 export async function processOperation(opId: string) {
+  const MODEL = (() => { try { return modelConfig().model; } catch { return "none"; } })();
   // Claim: only one runner may move requested -> processing
   const { data: claimed } = await db.from("operations").update({ status: "processing" }).eq("id", opId).eq("status", "requested").select("*");
   const op = claimed?.[0];
