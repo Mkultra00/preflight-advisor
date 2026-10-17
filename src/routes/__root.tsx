@@ -110,7 +110,12 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <header className="sticky top-0 z-20 border-b border-foreground bg-background">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-6 gap-y-2 px-4 py-3">
-          <Link to="/" className="flex items-baseline gap-2">
+          <Link to="/" className="flex items-center gap-3">
+            <img
+              src={catWizardAvatar}
+              alt="Cat wizard avatar"
+              className="h-14 w-14 rounded-full border-2 border-primary shadow-md"
+            />
             <span className="text-lg font-bold tracking-tight">JRR Token</span>
             <span className="label-caps">Just Really Reliable · MONEY TALKS 2</span>
           </Link>
